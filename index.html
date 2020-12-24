@@ -1,6 +1,6 @@
 <html>
 <head>
-<script type=“text/javascript”>
+<script type="text/javascript">
 "use strict";
 window.XsUtils=window.XsUtils||function(){return{extend:function(e,t){var n,a=t||{};for(n in e)e.hasOwnProperty(n)&&(a[n]=e[n]);return a}}}(),function(){var e,t="exad-cross-domain-local-message",n={namespace:t};function a(e,t){var a=XsUtils.extend(t,n);a.id=e,parent.postMessage(JSON.stringify(a),"*")}function i(e){var n,i,o,c;try{n=JSON.parse(e.data)}catch(e){}n&&n.namespace===t&&("set"===n.action?(i=n.id,o=n.key,c=n.value,localStorage.setItem(o,c),a(i,{success:localStorage.getItem(o)===c})):"get"===n.action?function(e,t){a(e,{key:t,value:localStorage.getItem(t)})}(n.id,n.key):"remove"===n.action?function(e,t){localStorage.removeItem(t),a(e,{})}(n.id,n.key):"key"===n.action?function(e,t){a(e,{key:localStorage.key(t)})}(n.id,n.key):"size"===n.action?function(e){a(e,{size:JSON.stringify(localStorage).length})}(n.id):"length"===n.action?function(e){a(e,{length:localStorage.length})}(n.id):"clear"===n.action&&function(e){localStorage.clear(),a(e,{})}(n.id))}window.addEventListener?window.addEventListener("message",i,!1):window.attachEvent("onmessage",i),e={namespace:t,id:"iframe-ready"},parent.postMessage(JSON.stringify(e),"*")}();
 </script>
